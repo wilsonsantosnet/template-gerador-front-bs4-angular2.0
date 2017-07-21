@@ -1,6 +1,6 @@
-﻿import { Component, OnInit, ViewChild, Output, EventEmitter, } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl} from '@angular/forms';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
@@ -21,7 +21,6 @@ export class <#className#>Component implements OnInit {
     @ViewChild('saveModal') private saveModal: ModalDirective;
     @ViewChild('editModal') private editModal: ModalDirective;
     @ViewChild('detailsModal') private detailsModal: ModalDirective;
-    @ViewChild('formCreate') private formCreate;
 
     constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router) {
 
@@ -64,7 +63,7 @@ export class <#className#>Component implements OnInit {
 
         this.editModal.show();
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
-            this.vm.model = result.data;
+            this.vm.model = result.dataList[0];
         })
 
     }
@@ -88,9 +87,8 @@ export class <#className#>Component implements OnInit {
     public onDetails(model) {
 
         this.detailsModal.show();
-
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
-            this.vm.model = result.data;
+            this.vm.model = result.dataList[0];
         })
 
     }
@@ -103,16 +101,18 @@ export class <#className#>Component implements OnInit {
     }
 
 
-    public onPrint(<#KeyName#>) {
-        this.router.navigate(['/<#classNameLower#>/print', <#KeyName#>]);
+    public onPrint(model) {
+        this.router.navigate(['/<#classNameLower#>/print', model.<#KeyNameCamelCase#>]);
     }
 
     public onDeleteConfimation(model) {
 
+
+
         var conf = GlobalService.operationExecutedParameters(
             "confirm-modal",
             () => {
-                this.<#classNameInstance#>Service.delete({ fluxoTrabalhoStatusId: model }).subscribe((result) => {
+                this.<#classNameInstance#>Service.delete(model).subscribe((result) => {
                     this.vm.filterResult = this.vm.filterResult.filter(function (model) {
                         return <#ExpressionKeyNames#>;
                     });

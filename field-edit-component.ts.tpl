@@ -1,21 +1,23 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
-
+﻿import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 
 @Component({
-    selector: 'app-<#classNameLowerAndSeparator#>-field',
-    templateUrl: './<#classNameLowerAndSeparator#>-field.component.html',
-    styleUrls: ['./<#classNameLowerAndSeparator#>-field.component.css']
+    selector: 'app-<#classNameLowerAndSeparator#>-field-edit',
+    templateUrl: './<#classNameLowerAndSeparator#>-field-edit.component.html',
+    styleUrls: ['./<#classNameLowerAndSeparator#>-field-edit.component.css']
 })
-export class FluxoTrabalhoStatusFieldComponent implements OnInit {
+export class <#className#>FieldEditComponent implements OnInit {
 
     @Input() vm: any;
 
 
-    constructor() { }
+    constructor(private <#classNameInstance#>Service: <#className#>Service, private ref: ChangeDetectorRef) { }
 
-    ngOnInit() {
-        this.isValid();
-    }
+    ngOnInit() { }
+
+	ngOnChanges() {
+       this.ref.detectChanges()
+	}
 
     public onSave(model)
     {
@@ -25,27 +27,7 @@ export class FluxoTrabalhoStatusFieldComponent implements OnInit {
     public onCancel() {
 
     }
-
-    public onChange_makeSelect_model_fluxoTrabalhoTipoId(eventArgs) {
-        this.vm.model.fluxoTrabalhoTipoId = eventArgs;
-        this.isValid();
-    }
-    public isValid() {
-
-        for (let key in this.vm.required) {
-            if (this.vm.required.hasOwnProperty(key)) {
-
-                console.log("isValid", this.vm.model);
-
-                if (this.vm.model[key] == null || this.vm.model[key] == undefined || this.vm.model[key] == "undefined" || this.vm.model[key] == "") {
-                    this.vm.isValid = false;
-                    return false;
-                }
-            }
-        }
-        this.vm.isValid = true;
-        return true;
-
-    }
-
+    
+<#fieldItems#>
+   
 }
