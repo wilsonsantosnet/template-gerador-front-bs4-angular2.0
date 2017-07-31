@@ -34,6 +34,7 @@ export class <#className#>Service extends ServiceBase {
             modelFilter: {},
             summary: {},
             model: {},
+			details: {},
             infos: this.getInfos(),
             grid: super.getInfoGrid(this.getInfos()),
             form: this._form
@@ -64,6 +65,11 @@ export class <#className#>Service extends ServiceBase {
 
         return this.api.setResource('<#className#>').delete(model);
 
+    }
+
+	upload(file: File)
+    {
+        return this.api.setResource('<#className#>').upload(file);
     }
 
 }
