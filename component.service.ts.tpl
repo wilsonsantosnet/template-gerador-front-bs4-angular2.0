@@ -62,10 +62,4 @@ export class <#className#>Service extends ServiceBase {
         return this.api.setResource('<#className#>').delete(model);
 
     }
-
-	upload(file: File)
-    {
-        return this.api.setResource('<#className#>').upload(file);
-    }
-
 }
