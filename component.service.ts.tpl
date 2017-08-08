@@ -32,7 +32,7 @@ export class <#className#>Service extends ServiceBase {
             modelFilter: {},
             summary: {},
             model: {},
-			details: {},
+	    	details: {},
             infos: this.getInfos(),
             grid: super.getInfoGrid(this.getInfos()),
             form: this._form
