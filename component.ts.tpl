@@ -53,18 +53,7 @@ export class <#className#>Component implements OnInit {
 
     }
 
-	onFileChange(event) {
-
-        let fileList: FileList = event.target.files;
-        if (fileList.length > 0) {
-            let file: File = fileList[0];
-            this.<#classNameInstance#>Service.upload(file).subscribe((result) => {
-
-            });
-        }
-    }
-
-    public onCreate() {
+	public onCreate() {
 
         this.vm.model = {};
         this.saveModal.show();
