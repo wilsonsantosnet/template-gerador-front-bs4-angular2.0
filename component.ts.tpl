@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl} from '@angular/forms';
 
@@ -22,8 +22,8 @@ export class <#className#>Component implements OnInit {
     @ViewChild('saveModal') private saveModal: ModalDirective;
     @ViewChild('editModal') private editModal: ModalDirective;
     @ViewChild('detailsModal') private detailsModal: ModalDirective;
-
-    constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router) {
+	
+    constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router, private ref: ChangeDetectorRef) {
 
         this.vm = null;
     }
@@ -31,6 +31,7 @@ export class <#className#>Component implements OnInit {
     ngOnInit() {
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
+		this.instituicaoEnsinoService.detectChanges(this.ref);
 
         this.<#classNameInstance#>Service.get().subscribe((result) => {
             this.vm.filterResult = result.dataList;
