@@ -2,8 +2,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
+import { RoutesContainer } from "app/global.service";
 
-const APP_ROUTES_DEFAULT: Routes = [
+RoutesContainer.routesDefault = [
 
 	{
         path: '', component: MainComponent, children: [
@@ -17,4 +18,4 @@ const APP_ROUTES_DEFAULT: Routes = [
 
 ]
 
-export const routingDefault: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES_DEFAULT);
+export const routingDefault: ModuleWithProviders = RouterModule.forRoot(RoutesContainer.routesDefault);
