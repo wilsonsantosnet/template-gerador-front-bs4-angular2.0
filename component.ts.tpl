@@ -31,7 +31,7 @@ export class <#className#>Component implements OnInit {
     ngOnInit() {
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
-		this.instituicaoEnsinoService.detectChanges(this.ref);
+		this.<#classNameInstance#>Service.detectChanges(this.ref);
 
         this.<#classNameInstance#>Service.get().subscribe((result) => {
             this.vm.filterResult = result.dataList;
