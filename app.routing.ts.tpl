@@ -4,7 +4,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RoutesContainer } from "app/global.service";
 
-RoutesContainer.routesDefault = [
+const APP_ROUTES_CUSTOM: Routes = [
 
 	{
         path: '', component: MainComponent, children: [
@@ -18,4 +18,7 @@ RoutesContainer.routesDefault = [
 
 ]
 
-export const routingDefault: ModuleWithProviders = RouterModule.forRoot(RoutesContainer.routesDefault);
+
+export const routingDefault: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES_CUSTOM);
+RoutesContainer.routesDefault = APP_ROUTES_CUSTOM;
+
