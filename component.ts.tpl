@@ -50,8 +50,13 @@ export class <#className#>Component implements OnInit {
     }
 
     public onExport() {
-
-
+        this.alunoService.export().subscribe((result) => {
+            var blob = new Blob([result._body], {
+                type: 'application/vnd.ms-excel'
+            });
+            var downloadUrl = window.URL.createObjectURL(blob);
+            window.location.href = downloadUrl;
+        })
     }
 
 	public onCreate() {
