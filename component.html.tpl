@@ -135,5 +135,3 @@
     </div>
   </div>
 </div>
-
-<confirm-modal></confirm-modal>
