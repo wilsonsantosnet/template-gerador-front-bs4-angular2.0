@@ -35,7 +35,8 @@ export class <#className#>Service extends ServiceBase {
 	    	details: {},
             infos: this.getInfos(),
             grid: super.getInfoGrid(this.getInfos()),
-            form: this._form
+            form: this._form,
+            masks: this.masksConfig()
         });
     }
 
