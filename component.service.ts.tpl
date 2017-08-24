@@ -21,7 +21,7 @@ export class <#className#>Service extends ServiceBase {
 
     }
 
-    initVM(): ViewModel {
+    initVM(): ViewModel<any> {
 
         return new ViewModel({
             mostrarFiltros: false,

@@ -15,7 +15,7 @@ import { GlobalService } from '../../global.service';
 })
 export class <#className#>Component implements OnInit {
 
-    vm: ViewModel;
+    vm: ViewModel<any>;
 
     operationConfimationYes: any;
 
@@ -84,9 +84,10 @@ export class <#className#>Component implements OnInit {
 
             this.vm.filterResult.push(result.data);
             this.vm.summary.total = this.vm.filterResult.length
-			this.saveModal.hide();
-        	this.editModal.hide();
         });
+
+        this.saveModal.hide();
+        this.editModal.hide();
     }
 
     public onDetails(model) {
