@@ -50,7 +50,7 @@ export class <#className#>Component implements OnInit {
     }
 
     public onExport() {
-        this.alunoService.export().subscribe((result) => {
+        this.<#classNameInstance#>Service.export().subscribe((result) => {
             var blob = new Blob([result._body], {
                 type: 'application/vnd.ms-excel'
             });
