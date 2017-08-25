@@ -63,4 +63,9 @@ export class <#className#>Service extends ServiceBase {
         return this.api.setResource('<#className#>').delete(model);
 
     }
+    
+    export(filters?: any): Observable<any>
+    {
+        return this.api.setResource('<#className#>').export(filters);
+    }
 }
