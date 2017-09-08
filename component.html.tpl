@@ -58,7 +58,6 @@
     <div class="col">
       <div class="card gc-grid">
         <div class="card-header gc-grid__header">
-          Titulo
         </div>
         <div class="card-block gc-grid__body">
 			<make-grid [(vm)]="vm" (edit)="onEdit($event)" (details)="onDetails($event)" (print)="onPrint($event)" (deleteConfimation)="onDeleteConfimation($event)"></make-grid>
