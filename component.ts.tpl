@@ -36,8 +36,21 @@ export class <#className#>Component implements OnInit {
         this.<#classNameInstance#>Service.get().subscribe((result) => {
             this.vm.filterResult = result.dataList;
             this.vm.summary = result.summary;
-        })
+        });
 
+		this.updateCulture();
+        GlobalService.changeCulture.subscribe((culture) => {
+            this.updateCulture(culture);
+        });
+
+    }
+
+	updateCulture(culture: string = null)
+    {
+        this.<#classNameInstance#>Service.updateCulture(culture).then(infos => {
+            this.vm.infos = infos;
+            this.vm.grid = this.<#classNameInstance#>Service.getInfoGrid(infos);
+        });
     }
 
 
@@ -84,10 +97,12 @@ export class <#className#>Component implements OnInit {
 
             this.vm.filterResult.push(result.data);
             this.vm.summary.total = this.vm.filterResult.length
+
+			this.saveModal.hide();
+	        this.editModal.hide();
+
         });
 
-        this.saveModal.hide();
-        this.editModal.hide();
     }
 
     public onDetails(model) {
