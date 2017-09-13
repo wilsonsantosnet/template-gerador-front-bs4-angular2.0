@@ -10,7 +10,7 @@ const APP_ROUTES_DEFAULT: Routes = [
         path: '', component: MainComponent, children: [
 
 <#classItems#>
-            <#classCustomItems#>
+<#classCustomItems#>
 
 		    ]
     },

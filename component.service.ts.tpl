@@ -70,19 +70,17 @@ export class <#className#>Service extends ServiceBase {
     }
 
     get(filters?: any): Observable<any> {
-
         return this.api.setResource('<#className#>').get(filters);
     }
-	
+
 	getDataCustom(filters?: any): Observable<any> {
         return this.api.setResource('<#className#>').getDataCustom(filters);
     }
-	
+
 	getDataListCustom(filters?: any): Observable<any> {
         return this.api.setResource('<#className#>').getDataListCustom(filters);
     }
 
-	
     save(model: any): Observable<any> {
 
         if (<#ExpressionKeyNames#>) {

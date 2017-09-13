@@ -5,7 +5,7 @@ import { FormsModule, FormGroup, FormControl} from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
 import { ViewModel } from 'app/common/model/viewmodel';
-import { GlobalService } from '../../global.service';
+import { GlobalService, NotificationParameters} from '../../global.service';
 
 
 @Component({
@@ -83,6 +83,9 @@ export class <#className#>Component implements OnInit {
         this.editModal.show();
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
             this.vm.model = result.dataList[0];
+			 GlobalService.notification.emit(new NotificationParameters("edit", {
+                model: this.vm.model
+            }));
         })
 
     }
