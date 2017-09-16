@@ -87,7 +87,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success" [disabled]="!vm && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
+          <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
@@ -109,7 +109,7 @@
 		</div>
         <div class="modal-footer">
           <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success" [disabled]="!vm && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
+          <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
