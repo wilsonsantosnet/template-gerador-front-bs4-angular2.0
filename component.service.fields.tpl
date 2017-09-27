@@ -19,9 +19,6 @@ export class <#className#>ServiceFields {
 		var defaultInfosFields = Object.assign(moreInfosFields || {}, {
 <#infos#>
         }
-	return defaultInfosFields;
+		return defaultInfosFields;
     }
-
-
-
 }
