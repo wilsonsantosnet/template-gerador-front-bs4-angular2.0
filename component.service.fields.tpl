@@ -15,10 +15,13 @@ export class <#className#>ServiceFields {
 		return new FormGroup(formControls);
 	}
 
+
+
 	getInfosFields(moreInfosFields? : any) {
 		var defaultInfosFields = Object.assign(moreInfosFields || {}, {
 <#infos#>
-        }
+        });
 		return defaultInfosFields;
     }
+
 }
