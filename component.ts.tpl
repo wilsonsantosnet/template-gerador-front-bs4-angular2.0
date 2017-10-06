@@ -129,6 +129,9 @@ export class <#className#>Component implements OnInit {
         this.detailsModal.hide();
     }
 
+	onClearFilter() {
+        this.vm.modelFilter = {};
+    }
 
     public onPrint(model) {
         this.router.navigate(['/<#classNameLower#>/print', model.<#KeyNameCamelCase#>]);
