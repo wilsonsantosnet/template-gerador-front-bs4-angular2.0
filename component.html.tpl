@@ -61,7 +61,7 @@
         <div class="card-header gc-grid__header">
 		</div>
         <div class="card-block gc-grid__body">
-			<make-grid [(vm)]="vm" (edit)="onEdit($event)" (details)="onDetails($event)" (print)="onPrint($event)" (deleteConfimation)="onDeleteConfimation($event)"></make-grid>
+			<make-grid [(vm)]="vm" (edit)="onEdit($event)" (details)="onDetails($event)" (print)="onPrint($event)" (deleteConfimation)="onDeleteConfimation($event)" (orderBy)="onOrderBy($event)"></make-grid>
         </div>
         <div class="card-footer gc-grid__footer">
           <div class="gc-pagination">
