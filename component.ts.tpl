@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, Output, EventEmitter, ChangeDetectorRef,OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl} from '@angular/forms';
 
@@ -6,18 +6,19 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
 import { ViewModel } from 'app/common/model/viewmodel';
 import { GlobalService, NotificationParameters} from '../../global.service';
-
+import { ComponentBase } from '../../common/components/component.base';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>',
     templateUrl: './<#classNameLowerAndSeparator#>.component.html',
     styleUrls: ['./<#classNameLowerAndSeparator#>.component.css'],
 })
-export class <#className#>Component implements OnInit {
+export class <#className#>Component extends ComponentBase implements OnInit, OnDestroy {
 
     vm: ViewModel<any>;
 
     operationConfimationYes: any;
+	changeCultureEmitter: EventEmitter<string>;
 
 	@ViewChild('filterModal') private filterModal: ModalDirective;
     @ViewChild('saveModal') private saveModal: ModalDirective;
@@ -26,7 +27,8 @@ export class <#className#>Component implements OnInit {
 	
     constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router, private ref: ChangeDetectorRef) {
 
-        this.vm = null;
+        super();
+		this.vm = null;
     }
 
     ngOnInit() {
@@ -40,7 +42,8 @@ export class <#className#>Component implements OnInit {
         });
 
 		this.updateCulture();
-        GlobalService.getChangeCultureEmitter().subscribe((culture) => {
+
+        this.changeCultureEmitter = GlobalService.getChangeCultureEmitter().subscribe((culture) => {
             this.updateCulture(culture);
         });
 
@@ -76,23 +79,18 @@ export class <#className#>Component implements OnInit {
 
 	public onCreate() {
 
+        this.showContainerCreate();
         this.vm.model = {};
         this.saveModal.show();
-		GlobalService.getNotificationEmitter().emit(new NotificationParameters("create", {
-            model: this.vm.model
-        }));
     }
 
     public onEdit(model) {
-
-        this.editModal.show();
+        this.vm.model = {};
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
             this.vm.model = result.dataList[0];
-			 GlobalService.getNotificationEmitter().emit(new NotificationParameters("edit", {
-                model: this.vm.model
-            }));
+			this.showContainerEdit();
+			this.editModal.show();
         })
-
     }
 
     public onSave(model) {
@@ -109,6 +107,8 @@ export class <#className#>Component implements OnInit {
 			if (!this.vm.manterTelaAberta) {
                 this.saveModal.hide();
                 this.editModal.hide();
+				this.hideContainerCreate();
+                this.hideContainerEdit();
             }
 
         });
@@ -117,6 +117,8 @@ export class <#className#>Component implements OnInit {
 
     public onDetails(model) {
 
+        this.showContainerDetails();
+        this.vm.details = {};
         this.detailsModal.show();
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
             this.vm.details = result.dataList[0];
@@ -130,9 +132,11 @@ export class <#className#>Component implements OnInit {
         this.editModal.hide();
         this.detailsModal.hide();
 		this.filterModal.hide();
+		this.hideComponents();
     }
 
 	public onShowFilter() {
+		this.showContainerFilters();
         this.filterModal.show();
     }
 
@@ -183,6 +187,10 @@ export class <#className#>Component implements OnInit {
             this.vm.filterResult = result.dataList;
             this.vm.summary = result.summary;
         });
+    }
+
+	ngOnDestroy() {
+        this.changeCultureEmitter.unsubscribe();
     }
 
 }

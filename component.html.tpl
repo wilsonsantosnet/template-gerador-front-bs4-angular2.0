@@ -1,6 +1,6 @@
 ﻿<div class="gc-body__heading">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Home >> {{ vm.actionTitle }}</a></li>
   </ol>
 
   <div class="gc-heading__controls">
@@ -44,7 +44,7 @@
 				</button>
 				</div>
 				<div class="modal-body">
-					<app-<#classNameLowerAndSeparator#>-container-filter [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-filter>
+					<app-<#classNameLowerAndSeparator#>-container-filter [(vm)]="vm" *ngIf="_showContainerFilters"></app-<#classNameLowerAndSeparator#>-container-filter>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-success" type="submit">
@@ -68,7 +68,7 @@
 			<make-grid [(vm)]="vm" (edit)="onEdit($event)" (details)="onDetails($event)" (print)="onPrint($event)" (deleteConfimation)="onDeleteConfimation($event)" (orderBy)="onOrderBy($event)"></make-grid>
         </div>
         <div class="card-footer gc-grid__footer">
-          <div class="gc-pagination">
+          <div class="gc-pagination gc-pagination-app">
             <make-pagination [(vm)]="vm" (pageChanged)="onPageChanged($event)"></make-pagination>
           </div>
         </div>
@@ -88,18 +88,16 @@
       </div>
       <form (ngSubmit)="onSave(vm.model)" novalidate>
         <div class="modal-body">
-          <app-<#classNameLowerAndSeparator#>-container-create [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-create>
+          <app-<#classNameLowerAndSeparator#>-container-create [(vm)]="vm" *ngIf="_showContainerCreate"></app-<#classNameLowerAndSeparator#>-container-create>
         </div>
         <div class="modal-footer">
+		  <label class="custom-control custom-checkbox">
+            <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' class="custom-control-input" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Manter Aberta?</span>
+          </label>
           <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
           <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
-		  <section class="col-md-4">
-            <div class='checkbox'>
-              <label>
-                <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' /> Manter Janela Aberta?
-              </label>
-            </div>
-          </section>
         </div>
       </form>
     </div>
@@ -117,18 +115,16 @@
       </div>
       <form (ngSubmit)="onSave(vm.model)" novalidate>
 		<div class="modal-body">
-			<app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-edit>
+			<app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm" *ngIf="_showContainerEdit"></app-<#classNameLowerAndSeparator#>-container-edit>
 		</div>
         <div class="modal-footer">
+		  <label class="custom-control custom-checkbox">
+            <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' class="custom-control-input" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Manter Aberta?</span>
+          </label>
           <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
           <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
-		  <section class="col-md-4">
-            <div class='checkbox'>
-              <label>
-                <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' /> Manter Janela Aberta?
-              </label>
-            </div>
-          </section>
         </div>
       </form>
     </div>
@@ -145,7 +141,7 @@
         </button>
       </div>
 	  <div class="modal-body">
-		<app-<#classNameLowerAndSeparator#>-container-details [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-details>
+		<app-<#classNameLowerAndSeparator#>-container-details [(vm)]="vm" *ngIf="_showContainerDetails"></app-<#classNameLowerAndSeparator#>-container-details>
 	  </div>
       <div class="modal-footer">
         <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
