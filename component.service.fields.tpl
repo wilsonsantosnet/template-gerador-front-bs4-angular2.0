@@ -1,12 +1,15 @@
 ﻿import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { ServiceBase } from 'app/common/services/service.base';
 
 @Injectable()
-export class <#className#>ServiceFields {
+export class <#className#>ServiceFields extends ServiceBase {
 
 
-    constructor() {}
+    constructor() {
+		super()
+	}
 
 	getFormFields(moreFormControls? : any) {
 		var formControls = Object.assign(moreFormControls || {},{
@@ -18,10 +21,10 @@ export class <#className#>ServiceFields {
 
 
 	getInfosFields(moreInfosFields? : any) {
-		var defaultInfosFields = Object.assign(moreInfosFields || {}, {
+		var defaultInfosFields = {
 <#infos#>
-        });
-		return defaultInfosFields;
+        };
+		return this.mergeInfoFields(defaultInfosFields, moreInfosFields);
     }
 
 }

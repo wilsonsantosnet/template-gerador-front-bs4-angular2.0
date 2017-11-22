@@ -96,8 +96,8 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Manter Aberta?</span>
           </label>
-          <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
+          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
+          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
