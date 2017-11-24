@@ -47,7 +47,7 @@
 					<app-<#classNameLowerAndSeparator#>-container-filter [(vm)]="vm" *ngIf="_showContainerFilters"></app-<#classNameLowerAndSeparator#>-container-filter>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-success" type="submit">
+					<button class="btn btn-success btn-success-app" type="submit">
 						<span class="fa fa-search"></span>
 						{{vm.generalInfo.filtrar.label}}
 					</button>
