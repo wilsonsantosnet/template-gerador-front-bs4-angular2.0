@@ -1,5 +1,5 @@
 ﻿<div class="gc-body__heading">
-  <ol class="breadcrumb">
+  <ol class="breadcrumb breadcrumb-app">
     <li class="breadcrumb-item"><a href="/">Home >> {{ vm.actionTitle }}</a></li>
   </ol>
 
@@ -10,10 +10,10 @@
           <a href="javascript:history.back()" class="btn btn-sm btn-outline-secondary mr-auto p-2">
             <span class="fa fa-arrow-left" aria-hidden="true"></span> {{vm.generalInfo.voltar.label}}
           </a>
-          <button type="button" class="btn btn-sm btn-primary p-2" (click)="onShowFilter()">
+          <button type="button" class="btn btn-sm btn-primary btn-primary-app  p-2" (click)="onShowFilter()">
             <span class="fa fa-filter" aria-hidden="true"></span> {{vm.generalInfo.filtro.label}}
           </button>
-          <button type="button" class="btn btn-sm btn-success p-2" (click)="onCreate()">
+          <button type="button" class="btn btn-sm btn-success btn-success-app p-2" (click)="onCreate()">
             <span class="fa fa-plus" aria-hidden="true"></span> {{vm.generalInfo.novoItem.label}}
           </button>
         </div>
@@ -51,8 +51,8 @@
 						<span class="fa fa-search"></span>
 						{{vm.generalInfo.filtrar.label}}
 					</button>
-					<button class="btn btn-primary" type="button" (click)="onCancel()">Fechar</button>
-					<button class="btn btn-default" type="button" (click)="onClearFilter()">Limpar</button>
+					<button class="btn btn-primary btn-primary-app" type="button" (click)="onCancel()">Fechar</button>
+					<button class="btn btn-default btn-default-app" type="button" (click)="onClearFilter()">Limpar</button>
 				</div>
 			</div>
 		</form>
@@ -123,8 +123,8 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Manter Aberta?</span>
           </label>
-          <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
+          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
+          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
@@ -144,9 +144,8 @@
 		<app-<#classNameLowerAndSeparator#>-container-details [(vm)]="vm" *ngIf="_showContainerDetails"></app-<#classNameLowerAndSeparator#>-container-details>
 	  </div>
       <div class="modal-footer">
-        <button class="btn btn-default" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
+        <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
       </div>
     </div>
   </div>
 </div>
-
