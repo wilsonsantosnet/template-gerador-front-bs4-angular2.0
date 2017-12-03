@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input,ChangeDetectorRef } from '@angular/core';
+﻿import { Component, OnInit, Input,ChangeDetectorRef,OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -6,22 +6,22 @@ import { ViewModel } from 'app/common/model/viewmodel';
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 import { GlobalService, NotificationParameters} from '../../../global.service';
 import { LocationHistoryService } from 'app/common/services/location.history';
+import { ComponentBase } from 'app/common/components/component.base';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-edit',
     templateUrl: './<#classNameLowerAndSeparator#>-edit.component.html',
     styleUrls: ['./<#classNameLowerAndSeparator#>-edit.component.css'],
 })
-export class <#className#>EditComponent implements OnInit {
+export class <#className#>EditComponent extends ComponentBase implements OnInit, OnDestroy {
 
     @Input() vm: ViewModel<any>;
     id: number;
     private sub: any;
 
     constructor(private <#classNameInstance#>Service: <#className#>Service, private route: ActivatedRoute, private router: Router, private ref: ChangeDetectorRef) {
-
-		 this.vm = null;
-
+		super();
+		this.vm = null;
     }
 
     ngOnInit() {
@@ -33,13 +33,10 @@ export class <#className#>EditComponent implements OnInit {
             this.id = params['id']; 
         });
 
-		setTimeout(() => {
         this.<#classNameInstance#>Service.get({ id: this.id }).subscribe((data) => {
             this.vm.model = data.data;
-			GlobalService.getNotificationEmitter().emit(new NotificationParameters("edit", {
-                model: this.vm.model
-            }));
-        })}, 250);
+			this.showContainerEdit();
+        })
 
     }
 
@@ -50,4 +47,7 @@ export class <#className#>EditComponent implements OnInit {
         });
     }
 
+	ngOnDestroy() {
+		this.usuarioService.detectChangesStop();
+    }
 }
