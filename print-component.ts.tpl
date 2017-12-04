@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -18,7 +18,7 @@ export class <#className#>PrintComponent implements OnInit {
     private sub: any;
 
     constructor(private <#classNameInstance#>Service: <#className#>Service, private route: ActivatedRoute) {
-		this.vm = null;
+		this.vm = this.<#classNameInstance#>Service.initVM();
     }
 
     ngOnInit() {
@@ -27,11 +27,12 @@ export class <#className#>PrintComponent implements OnInit {
             this.id = params['id']; 
         });
 
-        this.vm = this.<#classNameInstance#>Service.initVM();
-
-        this.<#classNameInstance#>Service.get({ id: this.id }).subscribe((data) => {
-            this.vm.details = data.data;
-        })
+		if (this.id)
+		{
+			this.<#classNameInstance#>Service.get({ id: this.id }).subscribe((data) => {
+				this.vm.details = data.data;
+			});
+		}
 
     }
     
