@@ -48,6 +48,6 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
     }
 
 	ngOnDestroy() {
-		this.usuarioService.detectChangesStop();
+		this.<#classNameInstance#>Service.detectChangesStop();
     }
 }
