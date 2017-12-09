@@ -141,7 +141,11 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     }
 
     public onClearFilter() {
-        this.vm.modelFilter = {};
+        
+		this.vm.modelFilter = {};
+		GlobalService.getNotificationEmitter().emit(new NotificationParameters("init", {
+            model: {}
+        }));
     }
 
     public onPrint(model) {
@@ -191,7 +195,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
 	ngOnDestroy() {
         this.changeCultureEmitter.unsubscribe();
-		this.<#classNameInstance#>Service.detectChangesStop();
+		this.usuarioService.detectChangesStop();
     }
 
 }
