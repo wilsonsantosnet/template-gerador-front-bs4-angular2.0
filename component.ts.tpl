@@ -69,8 +69,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
     public onExport() {
         this.<#classNameInstance#>Service.export().subscribe((result) => {
-            var blob = new Blob([result._body], {
-                type: 'application/vnd.ms-excel'
+			var blob = new Blob([result.blob()], {
+                type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             });
             var downloadUrl = window.URL.createObjectURL(blob);
             window.location.href = downloadUrl;
@@ -141,8 +141,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     }
 
     public onClearFilter() {
-        
-		this.vm.modelFilter = {};
+  		this.vm.modelFilter = {};
 		GlobalService.getNotificationEmitter().emit(new NotificationParameters("init", {
             model: {}
         }));
