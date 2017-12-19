@@ -194,7 +194,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
 	ngOnDestroy() {
         this.changeCultureEmitter.unsubscribe();
-		this.usuarioService.detectChangesStop();
+		this.<#classNameInstance#>Service.detectChangesStop();
     }
 
 }
