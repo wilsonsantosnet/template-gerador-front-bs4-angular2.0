@@ -6,7 +6,7 @@
     </div>
     <div class="card-block gc-grid__body">
       <form (ngSubmit)="onSave(vm.model)" novalidate>
-        <app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-edit>
+        <app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm" *ngIf="_showContainerEdit"></app-<#classNameLowerAndSeparator#>-container-edit>
         <div class="modal-footer">
           <a href="javascript:history.back()" class="btn btn-primary btn-sm">
             <i class="fa fa-reply"></i> Voltar
