@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input,ChangeDetectorRef,OnDestroy } from '@angular/core';
+import { Component, OnInit, Input,ChangeDetectorRef,OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -27,6 +27,8 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
     ngOnInit() {
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
+        this.vm.actionDescription = "Edição";
+
 		this.<#classNameInstance#>Service.detectChanges(this.ref);
 
         this.sub = this.route.params.subscribe(params => {
