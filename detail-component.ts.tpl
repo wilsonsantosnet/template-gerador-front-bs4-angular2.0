@@ -2,7 +2,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ViewModel } from '../../../common/model/viewmodel';
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 
 @Component({

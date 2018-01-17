@@ -1,12 +1,12 @@
-import { Component, OnInit, Input,ChangeDetectorRef,OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, Input,ChangeDetectorRef,OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ViewModel } from '../../../common/model/viewmodel';
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 import { GlobalService, NotificationParameters} from '../../../global.service';
-import { LocationHistoryService } from 'app/common/services/location.history';
-import { ComponentBase } from 'app/common/components/component.base';
+import { LocationHistoryService } from '../../../common/services/location.history';
+import { ComponentBase } from '../../../common/components/component.base';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-edit',
@@ -27,8 +27,6 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
     ngOnInit() {
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
-        this.vm.actionDescription = "Edição";
-
 		this.<#classNameInstance#>Service.detectChanges(this.ref);
 
         this.sub = this.route.params.subscribe(params => {
@@ -42,7 +40,7 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
 
     }
 
-    onSave(model) {
+    onSave(model : any) {
 
         this.<#classNameInstance#>Service.save(model).subscribe((result) => {
             this.router.navigate([LocationHistoryService.getLastNavigation()])

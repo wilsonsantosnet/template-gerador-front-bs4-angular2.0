@@ -25,8 +25,8 @@ import { <#className#>RoutingModule } from './<#classNameLowerAndSeparator#>.rou
 import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
 import { <#className#>ServiceFields } from './<#classNameLowerAndSeparator#>.service.fields';
 
-import { ApiService } from 'app/common/services/api.service';
-import { CommonSharedModule } from 'app/common/common-shared.module';
+import { ApiService } from '../../common/services/api.service';
+import { CommonSharedModule } from '../../common/common-shared.module';
 
 @NgModule({
     imports: [

@@ -4,7 +4,7 @@ import { FormsModule, FormGroup, FormControl} from '@angular/forms';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ViewModel } from '../../common/model/viewmodel';
 import { GlobalService, NotificationParameters} from '../../global.service';
 import { ComponentBase } from '../../common/components/component.base';
 
@@ -35,6 +35,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
 		this.<#classNameInstance#>Service.detectChanges(this.ref);
+		this.<#classNameInstance#>Service.OnHide(this.saveModal, this.editModal, () => { this.hideComponents() });
 
         this.<#classNameInstance#>Service.get().subscribe((result) => {
             this.vm.filterResult = result.dataList;
@@ -43,7 +44,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
 		this.updateCulture();
 
-        this.changeCultureEmitter = GlobalService.getChangeCultureEmitter().subscribe((culture) => {
+        this.changeCultureEmitter = GlobalService.getChangeCultureEmitter().subscribe((culture : any) => {
             this.updateCulture(culture);
         });
 
@@ -51,14 +52,14 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
 	updateCulture(culture: string = null)
     {
-        this.<#classNameInstance#>Service.updateCulture(culture).then(infos => {
+        this.<#classNameInstance#>Service.updateCulture(culture).then((infos : any) => {
             this.vm.infos = infos;
             this.vm.grid = this.<#classNameInstance#>Service.getInfoGrid(infos);
         });
     }
 
 
-    public onFilter(modelFilter) {
+    public onFilter(modelFilter: any) {
 
         this.<#classNameInstance#>Service.get(modelFilter).subscribe((result) => {
             this.vm.filterResult = result.dataList;
@@ -84,7 +85,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         this.saveModal.show();
     }
 
-    public onEdit(model) {
+    public onEdit(model: any) {
         this.vm.model = {};
         this.<#classNameInstance#>Service.get(model).subscribe((result) => {
             this.vm.model = result.dataList[0];
@@ -93,7 +94,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         })
     }
 
-    public onSave(model) {
+    public onSave(model: any) {
 
         this.<#classNameInstance#>Service.save(model).subscribe((result) => {
 
@@ -115,7 +116,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
     }
 
-    public onDetails(model) {
+    public onDetails(model: any) {
 
         this.showContainerDetails();
         this.vm.details = {};
@@ -147,11 +148,11 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         }));
     }
 
-    public onPrint(model) {
+    public onPrint(model: any) {
         this.router.navigate(['/<#classNameLower#>/print', model.<#KeyNameCamelCase#>]);
     }
 
-    public onDeleteConfimation(model) {
+    public onDeleteConfimation(model: any) {
 
 
 
@@ -174,7 +175,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         this.operationConfimationYes();
     }
 
-    public onPageChanged(pageConfig) {
+    public onPageChanged(pageConfig: any) {
 
         let modelFilter = this.<#classNameInstance#>Service.pagingConfig(this.vm.modelFilter, pageConfig);
         this.<#classNameInstance#>Service.get(modelFilter).subscribe((result) => {
@@ -183,7 +184,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         });
     }
 
-    public onOrderBy(order) {
+    public onOrderBy(order: any) {
 
         let modelFilter = this.<#classNameInstance#>Service.orderByConfig(this.vm.modelFilter, order);
         this.<#classNameInstance#>Service.get(modelFilter).subscribe((result) => {

@@ -3,9 +3,9 @@ import { Observable, Observer } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { ApiService } from 'app/common/services/api.service';
-import { ServiceBase } from 'app/common/services/service.base';
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ApiService } from '../../common/services/api.service';
+import { ServiceBase } from '../../common/services/service.base';
+import { ViewModel } from '../../common/model/viewmodel';
 import { GlobalService } from '../../global.service';
 import { <#className#>ServiceFields } from './<#classNameLowerAndSeparator#>.service.fields';
 import { GlobalServiceCulture, Translated, TranslatedField } from '../../global.service.culture';
@@ -61,7 +61,7 @@ export class <#className#>Service extends ServiceBase {
 
     getInfosTranslated(culture: string) {
         var grupo = "<#className#>";
-        return this.globalServiceCulture.getResource(grupo, culture, this.getInfos(), (culture, infosFields) => {
+        return this.globalServiceCulture.getResource(grupo, culture, this.getInfos(), (culture : any, infosFields: any) => {
             return new Promise((resolve, reject) => {
                 var translated = new Translated([]);
                 return resolve(this.globalServiceCulture.setResource(grupo, translated.get(culture), infosFields));

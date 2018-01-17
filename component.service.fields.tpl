@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { ServiceBase } from 'app/common/services/service.base';
+import { ServiceBase } from '../../common/services/service.base';
 
 @Injectable()
 export class <#className#>ServiceFields extends ServiceBase {

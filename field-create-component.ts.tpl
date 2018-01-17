@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ViewModel } from '../../../common/model/viewmodel';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-field-create',

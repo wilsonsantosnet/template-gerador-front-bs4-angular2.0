@@ -1,6 +1,7 @@
 ﻿
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewModel } from 'app/common/model/viewmodel';
+
+import { ViewModel } from '../../../common/model/viewmodel';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-field-details',

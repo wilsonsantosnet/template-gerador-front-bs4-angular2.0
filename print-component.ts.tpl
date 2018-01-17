@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
-import { ViewModel } from 'app/common/model/viewmodel';
+import { ViewModel } from '../../../common/model/viewmodel';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-print',
