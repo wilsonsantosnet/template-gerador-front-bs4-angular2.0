@@ -27,6 +27,8 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
     ngOnInit() {
 
 		this.vm = this.<#classNameInstance#>Service.initVM();
+        this.vm.actionDescription = "Edição";
+
 		this.<#classNameInstance#>Service.detectChanges(this.ref);
 
         this.sub = this.route.params.subscribe(params => {

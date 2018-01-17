@@ -48,12 +48,12 @@
 					<app-<#classNameLowerAndSeparator#>-container-filter [(vm)]="vm" *ngIf="_showContainerFilters"></app-<#classNameLowerAndSeparator#>-container-filter>
 				</div>
 				<div class="modal-footer">
+					<button class="btn btn-primary btn-default-app" type="button" (click)="onCancel()">Fechar</button>
+					<button class="btn btn-default btn-primary-app" type="button" (click)="onClearFilter()">Limpar</button>
 					<button class="btn btn-success btn-success-app" type="submit">
 						<span class="fa fa-search"></span>
 						{{vm.generalInfo.filtrar.label}}
 					</button>
-					<button class="btn btn-primary btn-primary-app" type="button" (click)="onCancel()">Fechar</button>
-					<button class="btn btn-default btn-default-app" type="button" (click)="onClearFilter()">Limpar</button>
 				</div>
 			</div>
 		</form>
@@ -63,8 +63,6 @@
   <div class="row">
     <div class="col">
       <div class="card gc-grid">
-        <div class="card-header gc-grid__header">
-		</div>
         <div class="card-block gc-grid__body">
 			<make-grid [(vm)]="vm" (edit)="onEdit($event)" (details)="onDetails($event)" (print)="onPrint($event)" (deleteConfimation)="onDeleteConfimation($event)" (orderBy)="onOrderBy($event)"></make-grid>
         </div>
@@ -92,13 +90,13 @@
           <app-<#classNameLowerAndSeparator#>-container-create [(vm)]="vm" *ngIf="_showContainerCreate"></app-<#classNameLowerAndSeparator#>-container-create>
         </div>
         <div class="modal-footer">
+          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
+          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
 		  <label class="custom-control custom-checkbox">
             <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' class="custom-control-input" />
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Manter Aberta?</span>
           </label>
-          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid" >{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
@@ -119,13 +117,13 @@
 			<app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm" *ngIf="_showContainerEdit"></app-<#classNameLowerAndSeparator#>-container-edit>
 		</div>
         <div class="modal-footer">
+          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
+          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
 		  <label class="custom-control custom-checkbox">
             <input type='checkbox' [(ngModel)]='vm.manterTelaAberta' name='manterTelaAberta' class="custom-control-input" />
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Manter Aberta?</span>
           </label>
-          <button class="btn btn-default btn-default-app" type="button" (click)="onCancel()">{{vm.generalInfo.cancelar.label}}</button>
-          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid">{{vm.generalInfo.salvar.label}}</button>
         </div>
       </form>
     </div>
@@ -136,7 +134,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">detalhes de {{ vm.actionTitle }}</h4>
+        <h4 class="modal-title pull-left">Detalhes de {{ vm.actionTitle }}</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
           <span aria-hidden="true">&times;</span>
         </button>
