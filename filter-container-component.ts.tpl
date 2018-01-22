@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
+﻿//EXT
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
