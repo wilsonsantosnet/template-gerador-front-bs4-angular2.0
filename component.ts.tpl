@@ -86,9 +86,15 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     }
 
     public onEdit(model: any) {
+
         this.vm.model = {};
-        this.<#classNameInstance#>Service.get(model).subscribe((result) => {
-            this.vm.model = result.dataList[0];
+		let newModel : any = model;
+		if (model)
+		{
+			newModel = <#ParametersKeyNamesModel#>
+		}
+        this.<#classNameInstance#>Service.get(newModel).subscribe((result) => {
+            this.vm.model = result.dataList ? result.dataList[0] : result.data;
 			this.showContainerEdit();
 			this.editModal.show();
         })
@@ -118,11 +124,18 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
     public onDetails(model: any) {
 
+
+		this.vm.details = {};
+		let newModel : any = model;
+		if (model)
+		{
+			newModel = <#ParametersKeyNamesModel#>
+		}
+
         this.showContainerDetails();
-        this.vm.details = {};
         this.detailsModal.show();
-        this.<#classNameInstance#>Service.get(model).subscribe((result) => {
-            this.vm.details = result.dataList[0];
+        this.<#classNameInstance#>Service.get(newModel).subscribe((result) => {
+            this.vm.details = result.dataList ? result.dataList[0] : result.data;
         })
 
     }
@@ -154,13 +167,16 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
     public onDeleteConfimation(model: any) {
 
-
-
         var conf = GlobalService.operationExecutedParameters(
             "confirm-modal",
             () => {
                 this.<#classNameInstance#>Service.delete(model).subscribe((result) => {
-                    this.vm.filterResult = this.vm.filterResult.filter(function (model) {
+					let newModel : any = model;
+					if (model)
+					{
+						newModel = <#ParametersKeyNamesModel#>
+					}
+                    this.vm.filterResult = this.vm.filterResult.filter(function (newModel) {
                         return <#ExpressionKeyNames#>;
                     });
                     this.vm.summary.total = this.vm.filterResult.length
