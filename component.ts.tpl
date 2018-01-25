@@ -123,8 +123,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     }
 
     public onDetails(model: any) {
-
-
+	
 		this.vm.details = {};
 		let newModel : any = model;
 		if (model)

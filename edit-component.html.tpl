@@ -6,12 +6,12 @@
     </div>
     <div class="card-block gc-grid__body">
       <form (ngSubmit)="onSave(vm.model)" novalidate>
-        <app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm"></app-<#classNameLowerAndSeparator#>-container-edit>
+        <app-<#classNameLowerAndSeparator#>-container-edit [(vm)]="vm" *ngIf="_showContainerEdit"></app-<#classNameLowerAndSeparator#>-container-edit>
         <div class="modal-footer">
-          <a href="javascript:history.back()" class="btn btn-primary btn-sm">
+          <a href="javascript:history.back()" class="btn btn-default btn-default-app">
             <i class="fa fa-reply"></i> Voltar
           </a>
-          <button type="submit" class="btn btn-success" [disabled]="vm != null && vm.form.invalid">Salvar</button>
+          <button type="submit" class="btn btn-success btn-success-app" [disabled]="vm != null && vm.form.invalid">Salvar</button>
         </div>
       </form>
     </div>
