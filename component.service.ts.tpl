@@ -61,13 +61,7 @@ export class <#className#>Service extends ServiceBase {
     }
 
     getInfosTranslated(culture: string) {
-        var grupo = "<#className#>";
-        return this.globalServiceCulture.getResource(grupo, culture, this.getInfos(), (culture : any, infosFields: any) => {
-            return new Promise((resolve, reject) => {
-                var translated = new Translated([]);
-                return resolve(this.globalServiceCulture.setResource(grupo, translated.get(culture), infosFields));
-            });
-        });
+    	return this.globalServiceCulture.getInfosTranslatedStrategy('<#className#>', culture, this.getInfos(), []);
     }
 
     get(filters?: any): Observable<any> {
