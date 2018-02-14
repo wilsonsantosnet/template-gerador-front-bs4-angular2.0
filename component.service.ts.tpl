@@ -61,7 +61,7 @@ export class <#className#>Service extends ServiceBase {
     }
 
     getInfosTranslated(culture: string) {
-    	return this.globalServiceCulture.getInfosTranslatedStrategy('<#className#>', culture, this.getInfos(), []);
+		return this.globalServiceCulture.getInfosTranslatedStrategy('<#className#>', culture, this.getInfos(), []);
     }
 
     get(filters?: any): Observable<any> {
