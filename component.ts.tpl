@@ -169,13 +169,13 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         var conf = GlobalService.operationExecutedParameters(
             "confirm-modal",
             () => {
-                this.<#classNameInstance#>Service.delete(model).subscribe((result) => {
-					let newModel : any = model;
-					if (model)
-					{
-						newModel = <#ParametersKeyNamesModel#>
-					}
-                    this.vm.filterResult = this.vm.filterResult.filter(function (newModel) {
+				let newModel : any = model;
+				if (model)
+				{	
+					newModel = <#ParametersKeyNamesModel#>
+				}
+                this.<#classNameInstance#>Service.delete(newModel).subscribe((result) => {
+                    this.vm.filterResult = this.vm.filterResult.filter(function (model) {
                         return <#ExpressionKeyNames#>;
                     });
                     this.vm.summary.total = this.vm.filterResult.length
