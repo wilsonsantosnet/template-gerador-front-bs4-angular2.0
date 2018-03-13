@@ -22,5 +22,4 @@ import { GlobalService } from '../../global.service';
 })
 
 export class <#className#>RoutingModule {
-
 }
