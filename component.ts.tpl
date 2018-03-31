@@ -56,7 +56,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
             this.vm.infos = infos;
             this.vm.grid = this.<#classNameInstance#>Service.getInfoGrid(infos);
         });
-		this.<#classNameInstance#>.updateCultureMain(culture).then((infos: any) => {
+		this.<#classNameInstance#>Service.updateCultureMain(culture).then((infos: any) => {
             this.vm.generalInfo = infos;
         });
     }
