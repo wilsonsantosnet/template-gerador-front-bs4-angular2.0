@@ -20,11 +20,11 @@ export class <#className#>ServiceFields extends ServiceBase {
 
 
 
-	getInfosFields(moreInfosFields? : any) {
+	getInfosFields(moreInfosFields? : any, orderByMore = false) {
 		var defaultInfosFields = {
 <#infos#>
         };
-		return this.mergeInfoFields(defaultInfosFields, moreInfosFields);
+		return this.mergeInfoFields(defaultInfosFields, moreInfosFields, orderByMore);
     }
 
 }
