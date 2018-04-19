@@ -1,1 +1,1 @@
-﻿            { path: '<#classNameLower#>', loadChildren: './main/<#classNameLowerAndSeparator#>/<#classNameLowerAndSeparator#>.module#<#className#>Module' },
+            { path: '<#classNameLower#>', <#authGuard#> loadChildren: './main/<#classNameLowerAndSeparator#>/<#classNameLowerAndSeparator#>.module#<#className#>Module' },
