@@ -40,6 +40,14 @@ export class <#className#>EditComponent extends ComponentBase implements OnInit,
 			this.showContainerEdit();
         })
 
+   		this.updateCulture();
+    }
+	
+	updateCulture(culture: string = null) {
+        this.<#classNameInstance#>Service.updateCulture(culture).then((infos: any) => {
+            this.vm.infos = infos;
+            this.vm.grid = this.<#classNameInstance#>Service.getInfoGrid(infos);
+        });
     }
 
     onSave(model : any) {
