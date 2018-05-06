@@ -26,6 +26,14 @@ export class <#className#>CreateComponent extends ComponentBase implements OnIni
         this.vm.actionDescription = "Cadastrar";
 
 		this.<#classNameInstance#>Service.detectChanges(this.ref);  
+		this.updateCulture();
+    }
+	
+	updateCulture(culture: string = null) {
+        this.<#classNameInstance#>Service.updateCulture(culture).then((infos: any) => {
+            this.vm.infos = infos;
+            this.vm.grid = this.<#classNameInstance#>Service.getInfoGrid(infos);
+        });
     }
 
     onSave(model : any) {
